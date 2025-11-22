@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BAR DO LAGO — Controle de Estoque</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/crest-placeholder.svg" alt="Brasao" class="crest">
+      <h1>BAR DO LAGO</h1>
+    </div>
+    <div class="controls">
+      <button id="btn-export" class="btn">Exportar JSON</button>
+      <button id="btn-import" class="btn outline">Importar JSON</button>
+      <input id="file-input" type="file" accept="application/json" style="display:none"/>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Adicionar Produto</h2>
+      <form id="form-add">
+        <input id="p-name" placeholder="Nome do produto (ex: Cerveja Pilsen)" required/>
+        <input id="p-unit" placeholder="Unidade (ex: unidade, ml)" />
+        <input id="p-price" placeholder="Preco (ex: 7.50)" inputmode="decimal"/>
+        <input id="p-qty" placeholder="Quantidade inicial" inputmode="numeric" required/>
+        <div class="row">
+          <button type="submit" class="btn primary">Adicionar</button>
+          <button id="btn-clear" type="button" class="btn outline">Limpar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Registrar Entrada / Reposicao</h2>
+      <form id="form-entry">
+        <select id="e-item"></select>
+        <input id="e-qty" placeholder="Quantidade" inputmode="numeric" required/>
+        <button type="submit" class="btn primary">Registrar Entrada</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Registrar Venda</h2>
+      <form id="form-sale">
+        <select id="s-item"></select>
+        <input id="s-qty" placeholder="Quantidade vendida" inputmode="numeric" required/>
+        <input id="s-price" placeholder="Preco por unidade (opcional)" inputmode="decimal"/>
+        <button type="submit" class="btn danger">Registrar Venda</button>
+      </form>
+    </section>
+
+    <section class="panel wide">
+      <h2>Estoque Atual</h2>
+      <div id="stock-alerts"></div>
+      <table id="table-inventory">
+        <thead><tr><th>Produto</th><th>Unidade</th><th>Preco</th><th>Quantidade</th><th>Acoes</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="panel wide">
+      <h2>Vendas (Ultimos 30 dias)</h2>
+      <div id="sales-summary" class="summary"></div>
+      <table id="table-sales">
+        <thead><tr><th>Data</th><th>Produto</th><th>Qtd</th><th>Preco un.</th><th>Valor</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Projeto entregue como ZIP pronto para GitHub Pages. Suba o conteudo da pasta <code>bar-do-lago</code> para o repositorio e habilite GitHub Pages em branch <code>main</code>.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
